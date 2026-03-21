@@ -14,46 +14,74 @@ if (!newPathname.startsWith(`/${toggleLang}`)) {
 }
 ---
 
-<nav class="w-full max-w-6xl mx-auto px-4 py-6 relative z-50">
-	<div class="flex items-center justify-between">
-		<a href={`/${lang}`} aria-label={t('nav.logo')} class="flex items-center hover:opacity-90 transition-opacity">
-			<Logo />
-		</a>
-		
-		<!-- Desktop Menu -->
-		<div class="hidden md:flex items-center gap-6">
-			<a href={`/${lang}/about`} class="text-sm font-medium text-zinc-300 hover:text-white transition-colors">
-				{t('nav.about')}
+<header class="sticky top-0 z-50 w-full bg-[#121214]/80 backdrop-blur-md border-b border-zinc-800/80 transition-all duration-300">
+	<nav class="w-full max-w-6xl mx-auto px-4 py-4 flex flex-col justify-center">
+		<div class="flex items-center justify-between">
+			<a href={`/${lang}`} aria-label={t('nav.logo')} class="flex items-center hover:opacity-90 transition-opacity">
+				<Logo />
 			</a>
-			<a href={newPathname} class="text-sm font-medium text-zinc-400 hover:text-white transition-colors" data-astro-reload>
-				{t('nav.langToggle')}
-			</a>
-			<button class="open-contact-modal bg-[#F97316] hover:bg-orange-600 shadow-[0_0_15px_rgba(249,115,22,0.15)] text-white px-5 py-2.5 rounded-lg font-bold transition-all transform hover:-translate-y-0.5 cursor-pointer">
-				{t('nav.contact')}
+			
+			<!-- Desktop Menu -->
+			<div class="hidden md:flex items-center gap-6">
+				<a href={`/${lang}`} class="text-sm font-medium text-zinc-300 hover:text-white transition-colors">
+					{t('nav.home')}
+				</a>
+				<a href={`/${lang}/about`} class="text-sm font-medium text-zinc-300 hover:text-white transition-colors">
+					{t('nav.about')}
+				</a>
+				<a href={`/${lang}/#faq`} class="text-sm font-medium text-zinc-300 hover:text-white transition-colors">
+					{t('nav.faq')}
+				</a>
+				<a href={`/${lang}/privacy`} class="text-sm font-medium text-zinc-300 hover:text-white transition-colors">
+					{t('nav.privacy')}
+				</a>
+				<a href={`/${lang}/contact`} class="text-sm font-medium text-zinc-300 hover:text-white transition-colors">
+					{t('nav.contact_page')}
+				</a>
+				<a href={newPathname} class="flex items-center justify-center border border-zinc-700 bg-zinc-800/80 text-zinc-300 rounded-full px-4 py-1.5 text-xs font-bold hover:border-white hover:text-white hover:bg-zinc-700/50 shadow-sm hover:shadow-[0_0_15px_rgba(249,115,22,0.2)] active:border-[#10B981] transition-all duration-300" data-astro-reload>
+					{t('nav.langToggle')}
+				</a>
+				<button class="open-contact-modal bg-[#F97316] hover:bg-orange-600 shadow-[0_0_15px_rgba(249,115,22,0.15)] text-white px-5 py-2.5 rounded-lg font-bold transition-all transform hover:-translate-y-0.5 cursor-pointer">
+					{t('contact.submit')}
+				</button>
+			</div>
+
+			<!-- Mobile Hamburger Button -->
+			<button id="mobile-menu-btn" class="md:hidden text-zinc-300 hover:text-white focus:outline-none" aria-label="Toggle menu">
+				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-7 h-7">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+				</svg>
 			</button>
 		</div>
 
-		<!-- Mobile Hamburger Button -->
-		<button id="mobile-menu-btn" class="md:hidden text-zinc-300 hover:text-white focus:outline-none" aria-label="Toggle menu">
-			<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-7 h-7">
-				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-			</svg>
-		</button>
-	</div>
-
-	<!-- Mobile Menu Panel -->
-	<div id="mobile-menu" class="hidden md:hidden absolute top-20 left-4 right-4 bg-[#1A1A1D]/90 backdrop-blur-xl rounded-2xl border border-zinc-700/50 p-6 flex flex-col gap-6 shadow-2xl">
-		<a href={`/${lang}/about`} class="text-lg font-medium text-zinc-200 hover:text-white transition-colors text-center">
-			{t('nav.about')}
-		</a>
-		<a href={newPathname} class="text-lg font-medium text-zinc-400 hover:text-white transition-colors text-center" data-astro-reload>
-			{t('nav.langToggle')}
-		</a>
-		<button class="open-contact-modal w-full bg-[#F97316] hover:bg-orange-600 text-white px-4 py-3 rounded-lg font-bold transition-colors cursor-pointer text-center mt-2">
-			{t('nav.contact')}
-		</button>
-	</div>
-</nav>
+		<!-- Mobile Menu Panel -->
+		<div id="mobile-menu" class="hidden md:hidden mt-4 pt-4 border-t border-zinc-800/50 flex flex-col gap-5 transition-all duration-300 pb-2">
+			<a href={`/${lang}`} class="text-base font-medium text-zinc-200 hover:text-white transition-colors text-center w-full">
+				{t('nav.home')}
+			</a>
+			<a href={`/${lang}/about`} class="text-base font-medium text-zinc-200 hover:text-white transition-colors text-center w-full">
+				{t('nav.about')}
+			</a>
+			<a href={`/${lang}/#faq`} class="text-base font-medium text-zinc-200 hover:text-white transition-colors text-center w-full">
+				{t('nav.faq')}
+			</a>
+			<a href={`/${lang}/privacy`} class="text-base font-medium text-zinc-200 hover:text-white transition-colors text-center w-full">
+				{t('nav.privacy')}
+			</a>
+			<a href={`/${lang}/contact`} class="text-base font-medium text-zinc-200 hover:text-white transition-colors text-center w-full">
+				{t('nav.contact_page')}
+			</a>
+			<div class="flex justify-center w-full my-2">
+				<a href={newPathname} class="inline-flex items-center justify-center border border-zinc-700 bg-zinc-800/80 text-zinc-300 rounded-full px-6 py-2 text-sm font-bold hover:border-white hover:text-white hover:shadow-[0_0_20px_rgba(16,185,129,0.2)] transition-all duration-300 active:border-[#10B981]" data-astro-reload>
+					{t('nav.langToggle')}
+				</a>
+			</div>
+			<button class="open-contact-modal w-full bg-[#F97316] hover:bg-orange-600 text-white px-4 py-3 rounded-lg font-bold transition-colors cursor-pointer text-center mt-2">
+				{t('contact.submit')}
+			</button>
+		</div>
+	</nav>
+</header>
 
 <script>
 	document.addEventListener('astro:page-load', () => {

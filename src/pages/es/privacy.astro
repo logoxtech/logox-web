@@ -1,0 +1,34 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/ui';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<Layout lang={lang} title={`${t('nav.privacy')} | Logox`}>
+	<Navbar />
+	<main class="py-24 md:py-32 px-4 relative z-10 min-h-[70vh]">
+		<div class="max-w-3xl mx-auto mb-16">
+			<h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-white mb-4">
+				{t('privacy_title')}
+			</h1>
+			<p class="text-zinc-400 font-mono text-sm uppercase tracking-wider">
+				{t('privacy_subtitle')}
+			</p>
+		</div>
+
+		<article class="prose prose-invert prose-zinc max-w-3xl mx-auto text-zinc-300 leading-relaxed text-lg">
+			<p class="lead">{t('privacy_intro')}</p>
+			
+			<h2>{t('privacy_h1')}</h2>
+			<p>{t('privacy_t1')}</p>
+			
+			<h2>{t('privacy_h2')}</h2>
+			<p>{t('privacy_t2')}</p>
+		</article>
+	</main>
+	<Footer />
+</Layout>

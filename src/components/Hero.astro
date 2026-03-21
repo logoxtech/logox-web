@@ -5,11 +5,11 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
-<section class="max-w-4xl mx-auto px-4 py-24 md:py-32 text-center relative z-10">
+<section class="max-w-5xl mx-auto px-4 pt-20 pb-12 md:pt-28 md:pb-16 text-center relative z-10">
 	<h1 class="text-5xl md:text-7xl font-extrabold mb-8 tracking-tight text-transparent bg-clip-text bg-gradient-to-br from-zinc-100 via-zinc-200 to-zinc-500">
 		{t('hero.title')}
 	</h1>
-	<p class="text-lg md:text-xl text-zinc-400 max-w-2xl mx-auto leading-relaxed">
+	<p class="text-xl md:text-2xl text-zinc-400 max-w-3xl mx-auto leading-relaxed">
 		{t('hero.subtitle')}
 	</p>
 </section>

@@ -19,10 +19,10 @@ const methods = [
 	</div>
 	
 	<div class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
-		{methods.map(method => (
-			<div class="relative p-6 pt-10 z-10 bg-[#1A1A1D]/50 backdrop-blur-md rounded-2xl border border-zinc-700/50 overflow-hidden">
+		{methods.map((method, index) => (
+			<div class={`relative p-6 pt-10 z-10 bg-[#1A1A1D]/50 backdrop-blur-md rounded-2xl border border-zinc-700/50 overflow-hidden transition-all duration-500 hover:-translate-y-1 ${index % 2 === 0 ? 'hover:border-[#F97316]/50 hover:shadow-[0_0_40px_rgba(249,115,22,0.15)]' : 'hover:border-[#10B981]/50 hover:shadow-[0_0_40px_rgba(16,185,129,0.15)]'}`}>
 				<!-- Large transparent number in background -->
-				<span class="text-6xl font-bold text-zinc-800/30 absolute -top-4 -left-2 z-[-1] select-none tracking-tighter">
+				<span class="text-7xl font-extrabold text-zinc-300/15 absolute -top-4 -left-2 z-[-1] select-none tracking-tighter">
 					{method.num}
 				</span>
 				<h3 class="text-xl font-bold text-zinc-200 mb-3 tracking-wide flex items-center gap-2">
