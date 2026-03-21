@@ -1,0 +1,23 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/ui';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const toggleLang = lang === 'en' ? 'es' : 'en';
+const langUrl = `/${toggleLang}`;
+---
+
+<nav class="w-full max-w-6xl mx-auto px-4 py-6 flex items-center justify-between">
+	<a href={`/${lang}`} class="font-bold tracking-widest text-xl">
+		{t('nav.logo')}
+	</a>
+	<div class="flex items-center gap-6">
+		<a href={langUrl} class="text-sm font-medium hover:text-white transition-colors">
+			{t('nav.langToggle')}
+		</a>
+		<a href="#contact" class="bg-[#F97316] hover:bg-orange-600 text-white px-4 py-2 rounded-md font-medium transition-colors">
+			{t('nav.contact')}
+		</a>
+	</div>
+</nav>

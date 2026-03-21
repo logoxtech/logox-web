@@ -1,0 +1,27 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/ui';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const services = [
+	{ title: t('card1.title'), desc: t('card1.desc') },
+	{ title: t('card2.title'), desc: t('card2.desc') },
+	{ title: t('card3.title'), desc: t('card3.desc') }
+];
+---
+
+<section class="max-w-6xl mx-auto px-4 py-16">
+	<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+		{services.map(service => (
+			<div class="bg-zinc-900/50 border border-zinc-800 rounded-2xl p-8 hover:border-[#10B981] transition-colors duration-300 group flex flex-col gap-3">
+				<h3 class="text-xl font-semibold text-white group-hover:text-[#10B981] transition-colors duration-300">
+					{service.title}
+				</h3>
+				<p class="text-zinc-400 leading-relaxed text-sm lg:text-base">
+					{service.desc}
+				</p>
+			</div>
+		))}
+	</div>
+</section>
