@@ -1,0 +1,36 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/ui';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<Layout lang={lang} title={`${t('nav.about')} | Logox`}>
+	<Navbar />
+	<main class="py-24 md:py-32 px-4 relative z-10 min-h-[80vh] flex flex-col justify-center">
+		<div class="max-w-3xl mx-auto text-center mb-16">
+			<h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-br from-zinc-100 via-zinc-200 to-zinc-500 mb-6" style="view-transition-name: about-title;">
+				{t('about_title')}
+			</h1>
+			<p class="text-xl text-zinc-400 font-medium">
+				{t('about_subtitle')}
+			</p>
+		</div>
+
+		<article class="prose prose-invert prose-zinc max-w-3xl mx-auto text-zinc-300 leading-relaxed text-lg marker:text-[#10B981]">
+			<h2>{t('about_manifesto')}</h2>
+			<p>{t('about_text1')}</p>
+			<p>{t('about_text2')}</p>
+		</article>
+
+		<div class="max-w-3xl mx-auto text-center mt-20 border-t border-zinc-800/50 pt-16 w-full">
+			<button class="open-contact-modal bg-[#F97316] hover:bg-orange-600 shadow-[0_0_30px_rgba(249,115,22,0.15)] text-white px-8 py-4 rounded-xl font-bold transition-all transform hover:scale-105 cursor-pointer">
+				{t('contact.submit')}
+			</button>
+		</div>
+	</main>
+	<Footer />
+</Layout>

@@ -1,7 +1,25 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 @theme {
   --color-zinc-100: #f4f4f5;
   --color-zinc-800: #27272a;
   --color-zinc-900: #18181b;
+}
+
+::selection { 
+  background-color: #F97316; 
+  color: white; 
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  background-color: #18181b;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #27272a;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: #3f3f46;
 }

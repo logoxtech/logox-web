@@ -5,8 +5,8 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
-<section class="max-w-4xl mx-auto px-4 py-24 md:py-32 text-center">
-	<h1 class="text-5xl md:text-6xl font-bold mb-6 tracking-tight">
+<section class="max-w-4xl mx-auto px-4 py-24 md:py-32 text-center relative z-10">
+	<h1 class="text-5xl md:text-7xl font-extrabold mb-8 tracking-tight text-transparent bg-clip-text bg-gradient-to-br from-zinc-100 via-zinc-200 to-zinc-500">
 		{t('hero.title')}
 	</h1>
 	<p class="text-lg md:text-xl text-zinc-400 max-w-2xl mx-auto leading-relaxed">

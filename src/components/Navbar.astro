@@ -6,19 +6,67 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 const toggleLang = lang === 'en' ? 'es' : 'en';
-const langUrl = `/${toggleLang}`;
+
+const pathname = Astro.url.pathname;
+let newPathname = pathname.replace(`/${lang}`, `/${toggleLang}`);
+if (!newPathname.startsWith(`/${toggleLang}`)) {
+    newPathname = `/${toggleLang}`;
+}
 ---
 
-<nav class="w-full max-w-6xl mx-auto px-4 py-6 flex items-center justify-between">
-	<a href={`/${lang}`} aria-label={t('nav.logo')} class="flex items-center hover:opacity-90 transition-opacity">
-		<Logo />
-	</a>
-	<div class="flex items-center gap-6">
-		<a href={langUrl} class="text-sm font-medium hover:text-white transition-colors">
+<nav class="w-full max-w-6xl mx-auto px-4 py-6 relative z-50">
+	<div class="flex items-center justify-between">
+		<a href={`/${lang}`} aria-label={t('nav.logo')} class="flex items-center hover:opacity-90 transition-opacity">
+			<Logo />
+		</a>
+		
+		<!-- Desktop Menu -->
+		<div class="hidden md:flex items-center gap-6">
+			<a href={`/${lang}/about`} class="text-sm font-medium text-zinc-300 hover:text-white transition-colors">
+				{t('nav.about')}
+			</a>
+			<a href={newPathname} class="text-sm font-medium text-zinc-400 hover:text-white transition-colors" data-astro-reload>
+				{t('nav.langToggle')}
+			</a>
+			<button class="open-contact-modal bg-[#F97316] hover:bg-orange-600 shadow-[0_0_15px_rgba(249,115,22,0.15)] text-white px-5 py-2.5 rounded-lg font-bold transition-all transform hover:-translate-y-0.5 cursor-pointer">
+				{t('nav.contact')}
+			</button>
+		</div>
+
+		<!-- Mobile Hamburger Button -->
+		<button id="mobile-menu-btn" class="md:hidden text-zinc-300 hover:text-white focus:outline-none" aria-label="Toggle menu">
+			<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-7 h-7">
+				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+			</svg>
+		</button>
+	</div>
+
+	<!-- Mobile Menu Panel -->
+	<div id="mobile-menu" class="hidden md:hidden absolute top-20 left-4 right-4 bg-[#1A1A1D]/90 backdrop-blur-xl rounded-2xl border border-zinc-700/50 p-6 flex flex-col gap-6 shadow-2xl">
+		<a href={`/${lang}/about`} class="text-lg font-medium text-zinc-200 hover:text-white transition-colors text-center">
+			{t('nav.about')}
+		</a>
+		<a href={newPathname} class="text-lg font-medium text-zinc-400 hover:text-white transition-colors text-center" data-astro-reload>
 			{t('nav.langToggle')}
 		</a>
-		<button class="open-contact-modal bg-[#F97316] hover:bg-orange-600 text-white px-4 py-2 rounded-md font-medium transition-colors cursor-pointer">
+		<button class="open-contact-modal w-full bg-[#F97316] hover:bg-orange-600 text-white px-4 py-3 rounded-lg font-bold transition-colors cursor-pointer text-center mt-2">
 			{t('nav.contact')}
 		</button>
 	</div>
 </nav>
+
+<script>
+	document.addEventListener('astro:page-load', () => {
+		const btn = document.getElementById('mobile-menu-btn');
+		const menu = document.getElementById('mobile-menu');
+		
+		if (btn && menu) {
+            const newBtn = btn.cloneNode(true) as HTMLButtonElement;
+            btn.parentNode?.replaceChild(newBtn, btn);
+            
+			newBtn.addEventListener('click', () => {
+				menu.classList.toggle('hidden');
+			});
+		}
+	});
+</script>
