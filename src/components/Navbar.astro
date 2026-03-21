@@ -1,5 +1,6 @@
 ---
 import { getLangFromUrl, useTranslations } from '../i18n/ui';
+import Logo from './Logo.astro';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -9,15 +10,15 @@ const langUrl = `/${toggleLang}`;
 ---
 
 <nav class="w-full max-w-6xl mx-auto px-4 py-6 flex items-center justify-between">
-	<a href={`/${lang}`} class="font-bold tracking-widest text-xl">
-		{t('nav.logo')}
+	<a href={`/${lang}`} aria-label={t('nav.logo')} class="flex items-center hover:opacity-90 transition-opacity">
+		<Logo />
 	</a>
 	<div class="flex items-center gap-6">
 		<a href={langUrl} class="text-sm font-medium hover:text-white transition-colors">
 			{t('nav.langToggle')}
 		</a>
-		<a href="#contact" class="bg-[#F97316] hover:bg-orange-600 text-white px-4 py-2 rounded-md font-medium transition-colors">
+		<button class="open-contact-modal bg-[#F97316] hover:bg-orange-600 text-white px-4 py-2 rounded-md font-medium transition-colors cursor-pointer">
 			{t('nav.contact')}
-		</a>
+		</button>
 	</div>
 </nav>

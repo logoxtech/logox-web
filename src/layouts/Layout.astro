@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import ContactModal from '../components/ContactModal.astro';
 
 interface Props {
 	title?: string;
@@ -21,5 +22,6 @@ const { title = "Logox", lang = "en" } = Astro.props;
 	</head>
 	<body class="bg-[#09090B] text-zinc-100 antialiased min-h-screen">
 		<slot />
+		<ContactModal />
 	</body>
 </html>
