@@ -51,13 +51,13 @@ const canonicalURL = new URL(Astro.url.pathname, 'https://logox.tech');
 		<meta property="twitter:description" content={metaDesc} />
 		<meta property="twitter:image" content={new URL(image, canonicalURL)} />
 
-		<!-- Google Analytics 4 — Reemplaza 'G-XXXXXXXXXX' con tu ID de medición real -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-		<script>
+		<!-- Google Analytics 4 — ID de medición: G-MT2MX3TC55 -->
+		<script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-MT2MX3TC55"></script>
+		<script is:inline>
 			window.dataLayer = window.dataLayer || [];
 			function gtag(){dataLayer.push(arguments);}
 			gtag('js', new Date());
-			gtag('config', 'G-XXXXXXXXXX');
+			gtag('config', 'G-MT2MX3TC55');
 		</script>
 
 		<ClientRouter />
