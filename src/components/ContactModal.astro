@@ -136,6 +136,10 @@ const t = useTranslations(lang);
       const formData = new FormData(form);
       const data = Object.fromEntries(formData.entries());
 
+      // Detectar idioma según la URL actual
+      const language = window.location.pathname.includes("/en/") ? "en" : "es";
+      data.language = language;
+
       try {
         const response = await fetch(
           "https://n8n.logox.tech/webhook/logox-lead.v1",
