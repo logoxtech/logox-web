@@ -156,13 +156,15 @@ const t = useTranslations(lang);
         }
 
         // --- UI: estado de éxito ---
+        const successTitle = language === "en" ? "Message sent!" : "¡Mensaje enviado!";
+        const successBody  = language === "en" ? "Your message has been sent successfully!" : successText;
         contentContainer.innerHTML = `
           <div class="text-center py-8">
             <svg class="w-16 h-16 text-[#10B981] mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
             </svg>
-            <h3 class="text-xl font-bold text-white mb-2">¡Mensaje enviado!</h3>
-            <p class="text-zinc-400">${successText}</p>
+            <h3 class="text-xl font-bold text-white mb-2">${successTitle}</h3>
+            <p class="text-zinc-400">${successBody}</p>
           </div>
         `;
       } catch (error) {
@@ -179,8 +181,9 @@ const t = useTranslations(lang);
           const errorMsg = document.createElement("p");
           errorMsg.id = "form-error-msg";
           errorMsg.className = "text-red-400 text-sm text-center mt-3";
-          errorMsg.textContent =
-            "Ocurrió un error al enviar. Por favor intenta de nuevo.";
+          errorMsg.textContent = language === "en"
+            ? "An error occurred. Please try again."
+            : "Ocurrió un error al enviar. Por favor intenta de nuevo.";
           form.appendChild(errorMsg);
         }
       }
