@@ -11,7 +11,7 @@ interface Props {
 	lang?: string;
 }
 
-const { title, description, image = '/favicon.svg', lang } = Astro.props;
+const { title, description, image = '/og-image.png', lang } = Astro.props;
 
 const urlLang = getLangFromUrl(Astro.url);
 const currentLang = lang || urlLang;
@@ -50,6 +50,14 @@ const canonicalURL = new URL(Astro.url.pathname, 'https://logox.tech');
 		<meta property="twitter:title" content={metaTitle} />
 		<meta property="twitter:description" content={metaDesc} />
 		<meta property="twitter:image" content={new URL(image, canonicalURL)} />
+
+		<!-- Robots -->
+		<meta name="robots" content="index, follow" />
+
+		<!-- Hreflang (bilingual) -->
+		<link rel="alternate" hreflang="en" href="https://logox.tech/en/" />
+		<link rel="alternate" hreflang="es" href="https://logox.tech/es/" />
+		<link rel="alternate" hreflang="x-default" href="https://logox.tech/en/" />
 
 		<!-- Google Analytics 4 — ID de medición: G-MT2MX3TC55 -->
 		<script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-MT2MX3TC55"></script>
